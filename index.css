@@ -1,0 +1,636 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  scrollbar-width: none;
+  background: linear-gradient(180deg, #FFFDD0, #000080);
+  background-attachment: fixed; /* This fixes the background */
+}
+
+.container {
+  position: relative;
+  text-align: center;
+}
+
+.line {
+  position: absolute;
+  height: 4px;
+  width: 50%;
+  background-color: #333;
+}
+
+.line.left {
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  animation: left-line 2s forwards;
+}
+
+.line.right {
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  animation: right-line 2s forwards;
+}
+
+@keyframes left-line {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 50%;
+  }
+}
+
+@keyframes right-line {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 50%;
+  }
+}
+
+.line.left.move-up {
+  transform: translateY(-200px);
+  animation: left-line-expand 2s forwards;
+}
+
+.line.right.move-up {
+  transform: translateY(-200px);
+  animation: right-line-expand 2s forwards;
+}
+
+@keyframes left-line-expand {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 50%;
+  }
+}
+
+@keyframes right-line-expand {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 50%;
+  }
+}
+
+.main-title {
+  font-size: 80px;
+  font-weight: bold;
+  background: linear-gradient(90deg, red, orange, yellow, green, blue, purple);
+  background-size: 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  margin: 0;
+  position: relative;
+  opacity: 0;
+  animation: text-reveal 2s ease-in-out 2s forwards, color-shift 6s linear infinite 4s;
+}
+
+@keyframes text-reveal {
+  0% {
+    opacity: 0;
+    letter-spacing: 30px;
+  }
+  100% {
+    opacity: 1;
+    letter-spacing: 5px;
+  }
+}
+
+@keyframes color-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.options {
+  margin-top: 30px;
+}
+
+.option {
+  display: inline-block;
+  background-color: #fff;
+  border: 2px solid #333;
+  border-radius: 50px;
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 20px;
+  color: #333;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.option:hover {
+  background-color: #333;
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.container.animate .main-title,
+.container.animate .options,
+.container.animate .line {
+  transform: translateY(-100px);
+  opacity: 1;
+  transition: all 1s ease;
+}
+
+/* Settings Menu */
+.settings-menu {
+  overflow: auto;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background-color: white;
+  color: #000;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  width: 600px;
+  height: auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 1s ease;
+}
+
+#settings-menu.active {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+.container.animate #settings-menu {
+  top: 25%;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.container.reverse-animate #settings-menu {
+  top: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 1s ease;
+}
+
+.theme-selection {
+  margin: 20px 0;
+}
+
+.theme-selection label {
+  display: block;
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+.customization {
+  margin: 20px 0;
+}
+
+.customization h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.customization label {
+  display: block;
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+input[type="color"] {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.settings-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  position: relative;
+  width: 100%;
+}
+
+.left-section {
+  background-color: white;
+  color: black;
+  padding: 20px;
+  flex: 1;
+}
+
+.right-section {
+  background-color: white;
+  color: black;
+  padding: 20px;
+  flex: 1;
+}
+
+.divider {
+  width: 2px;
+  background-color: #333;
+}
+
+.light-theme {
+  background: linear-gradient(180deg, #FFFDD0, #000080);
+}
+
+.dark-theme {
+  background: linear-gradient(180deg, #333333, #000000);
+}
+
+/* Active Settings Menu Styles */
+.settings-menu.active {
+  background-color: #000;
+  color: #fff;
+}
+
+/* About Menu */
+#about-menu {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background-color: #fff;
+  color: #000;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  width: 600px;
+  height: auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 1s ease;
+}
+
+#about-menu.active {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+#about-menu p {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+#exit-about-button {
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 18px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#exit-about-button:hover {
+  background-color: #555;
+}
+
+/* Developer Menu */
+#developer-menu {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background-color: #fff;
+  color: #000;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  width: 600px;
+  height: auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 1s ease;
+}
+
+#developer-menu.active {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+#developer-menu p {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+#exit-developer-button {
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 18px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#exit-developer-button:hover {
+  background-color: #555;
+}
+
+#trynow-menu {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background-color: #fff;
+  color: #000;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  width: 1250px;
+  height: 500px;
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 1s ease;
+}
+
+#trynow-menu.active {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+.try-now-content {
+  display: flex;
+  flex: 1;
+  width: 100%;
+}
+
+.left-section {
+  flex: 0 0 20%; /* Fixed 20% width */
+  background-color: #f0f0f0;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-right: 2px solid #ccc; /* Optional for better visualization */
+}
+
+/* Update the background of the game screen (right section) */
+.right-section {
+  flex: 0 0 80%; /* Fixed 80% width */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #000; /* Set the background to black */
+  color: white; /* Set text color to white for contrast */
+}
+
+
+
+.game-list li {
+  opacity: 0; /* Initially hidden */
+  transform: translateX(0);
+  background-color: #6200ea;
+  color: white;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 5px;
+  text-align: center;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.game-list li:hover {
+	cursor: pointer;
+  background-color: #3700b3; /* Change background on hover */
+  transform: scale(1.05); /* Slightly enlarge the item on hover */
+}
+
+/* Slide in animations */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+
+
+
+.option.large,
+.option.active {
+  font-size: 20px;
+  padding: 15px 15px;
+  background-color: #333;
+  color: #fff;
+  border: 2px solid #fff;
+  transform: scale(1.2);
+  transition: all 0.3s ease;
+}
+
+.main-title,
+.options {
+  position: relative;
+  transition: all 0.5s ease-in-out;
+}
+
+.move-up {
+  transform: translateY(-200px);
+}
+
+#settings-button.centered {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.option {
+  display: inline-block;
+  background-color: #fff;
+  border: 2px solid #333;
+  border-radius: 50px;
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 20px;
+  color: #333;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0; /* Initially hidden */
+  transform: translateX(100%); /* Start from right */
+  animation: slideIn 1s forwards; /* Apply the slide-in animation */
+}
+
+.option:nth-child(1) {
+  animation-delay: 0.3s; /* Delay for first button */
+}
+
+.option:nth-child(2) {
+  animation-delay: 0.6s; /* Delay for second button */
+}
+
+.option:nth-child(3) {
+  animation-delay: 0.9s; /* Delay for third button */
+}
+
+.option:nth-child(4) {
+  animation-delay: 1.2s; /* Delay for fourth button */
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(100%); /* Start from right outside */
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0); /* Slide to its normal position */
+  }
+}
+
+.exit-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 30px;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.exit-button:hover {
+  color: #ff0000; /* Change color on hover */
+}
+
+ .game-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 300px;
+    }
+
+    .game-list li {
+      opacity: 0; /* Initially hidden */
+      transform: translateX(0);
+      background-color: #6200ea;
+      color: white;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 5px;
+      text-align: center;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+    }
+
+    /* Slide in animations */
+    @keyframes slideInRight {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    /* Assign animation based on odd/even position */
+    .game-list li:nth-child(odd) {
+      animation-name: slideInRight;
+      animation-delay: calc(0.5s * var(--i));
+    }
+
+    .game-list li:nth-child(even) {
+      animation-name: slideInLeft;
+      animation-delay: calc(0.5s * var(--i));
+    }
+	
+h1 {
+    text-align: center;
+}
+
+.game-container {
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+}
+
+canvas {
+    border: 2px solid white;
+    width: 400px;
+    height: 800px;
+}
+
+#gameControls {
+    padding: 10px;
+    flex: 1;
+}
+
+#startButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#scoreDisplay {
+    padding: 10px;
+    font-size: 24px;
+    color: #333;
+    flex: 1;
+    text-align: right;
+}
+
+canvas {
+    margin-top: 20px;
+    border: 1px solid #000;
+    background-color: #222;
+}
+

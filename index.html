@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Games</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Lines for the traveling effect -->
+    <div id="line.left" class="line left"></div>
+    <div id="line.right" class="line right"></div>
+
+    <!-- Main Title -->
+    <h1 class="main-title">FREE GAMES</h1>
+
+    <!-- Buttons -->
+    <div class="options">
+      <a id="try-now" class="option">Try Now</a>
+      <a id="settings-button" class="option">Settings</a>
+      <a id="about-button" class="option">About</a>
+      <a id="developer-button" class="option">Developer</a>
+    </div>
+
+    <!-- Settings Menu -->
+    <div id="settings-menu" class="settings-menu">
+      <button id="exit-button" class="exit-button">X</button>
+      <h2>Settings Menu</h2>
+      <p>Customize your preferences here:</p>
+
+      <!-- Settings container -->
+      <div class="settings-container">
+        <div class="section left-section">
+          <h2>Theme Options</h2>
+          <div class="theme-selection">
+            <label>
+              <input type="radio" name="theme" value="light" checked> Light Theme
+            </label>
+            <label>
+              <input type="radio" name="theme" value="dark"> Dark Theme
+            </label>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="section right-section">
+          <h2>Customize Settings</h2>
+          <div class="customization">
+            <h3>Background Gradient</h3>
+            <label>
+              Color 1: <input type="color" id="bg-color1" value="#FFFDD0">
+            </label>
+            <label>
+              Color 2: <input type="color" id="bg-color2" value="#000080">
+            </label>
+          </div>
+          <div class="customization">
+            <h3>Word Animation Colors</h3>
+            <label>
+              Color 1: <input type="color" id="word-color1" value="#ff0000">
+            </label>
+            <label>
+              Color 2: <input type="color" id="word-color2" value="#00ff00">
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Menu -->
+    <div id="about-menu" class="settings-menu">
+      <button id="exit-about-button" class="exit-button">X</button>
+      <h2>Explore These Free Games</h2>
+      <p>Here are some exciting and fun games that you can enjoy for free!</p>
+      <ul class="game-list">
+        <li>Tic Tac Toe</li>
+        <li>Snake Eater</li>
+        <li>Galaxy Shooting</li>
+        <li>Type Speed</li>
+        <li>Fly Bird</li>
+      </ul>
+    </div>
+
+    <!-- Developer Menu -->
+    <div id="developer-menu" class="settings-menu">
+      <button id="exit-developer-button" class="exit-button">X</button>
+      <h2>Developer</h2>
+      <p>This website was developed by BSCpE 1-B. For more information, contact us at <a href="mailto:developer@example.com">developer@example.com</a>.</p>
+    </div>
+
+<div id="trynow-menu" class="settings-menu">
+  <button id="exit-trynow-button" class="exit-button">X</button>
+  <div class="try-now-content">
+    <div class="left-section">
+      <h3>Game List</h3>
+      <ul class="game-list">
+        <li data-game="snake-eater">Snake Eater</li>
+        <li data-game="tic-tac-toe">Tic Tac Toe</li>
+        <li data-game="galaxy-shooting">Galaxy Shooting</li>
+        <li data-game="type-speed">Type Speed</li>
+        <li data-game="fly-bird">Fly Bird</li>
+      </ul>
+    </div>
+    <div class="right-section" id="gameContainer">
+      <p>Select a game to start playing!</p>
+	   
+    </div>
+  </div>
+</div>
+
+  </div>
+
+  <script src="index1.js"></script>
+ 
+</body>
+</html>
